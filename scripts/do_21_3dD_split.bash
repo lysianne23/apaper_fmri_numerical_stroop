@@ -2,13 +2,15 @@
 
 #set subj = Stroop_1
 subj=$1
-Datadir=/Volumes/NNU_Targeting/Analysis/GAM/${subj}/${subj}.results
-FirstBlocks_stimulidir=/Volumes/NNU_Targeting/Behav/${subj}/FirstBlocks
-LastBlocks_stimulidir=/Volumes/NNU_Targeting/Behav/${subj}/LastBlocks
-prefix_3dd=SplittedBlocks.
-SplittedBlocks_analysisdir=/Volumes/NNU_Targeting/Analysis/GAM/SplittingBlocks/${subj}/${subj}.results
 
-mkdir -p ${SplittedBlocks_analysisdir}
+topdir=/Volumes/NNU_Targeting
+Datadir=${topdir}/Analysis/GAM/${subj}/${subj}.results
+FirstBlocks_stimulidir=${topdir}/Behav/${subj}/FirstBlocks
+LastBlocks_stimulidir=${topdir}/Behav/${subj}/LastBlocks
+prefix_3dd=SplittedBlocks.
+SplittedBlocks_analysisdir=${topdir}/Analysis/GAM/SplittingBlocks/${subj}/${subj}.results
+
+\mkdir -p ${SplittedBlocks_analysisdir}
 echo ${SplittedBlocks_analysisdir}
 
 3dDeconvolve                                                                 \
@@ -56,3 +58,5 @@ echo ${SplittedBlocks_analysisdir}
     -fitts           ${SplittedBlocks_analysisdir}/${prefix_3dd}fitts.${subj} \
     -errts           ${SplittedBlocks_analysisdir}/${prefix_3dd}errts.${subj} \
     -bucket          ${SplittedBlocks_analysisdir}/${prefix_3dd}stats.${subj}
+
+exit 0
